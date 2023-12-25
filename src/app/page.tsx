@@ -4,6 +4,16 @@ export default function Home() {
       <b>
         <h1>Sanzhar Abduraimov</h1>
       </b>
+      <p>
+        <b>Moto:</b> &quot;<i>Чтобы перегореть, нужно сначала загореться</i>
+        &quot; -{" "}
+        <a
+          className="text-blue-500"
+          href="https://online-motivator.vercel.app/"
+        >
+          @Aidar
+        </a>{" "}
+      </p>
       <br />
       <p>
         <b>Education: </b> Nazarbayev University
@@ -20,7 +30,9 @@ export default function Home() {
       </p>
       <br />
       <p>
-        <a href="https://github.com/sanxzhar">Github</a>
+        <a className="text-blue-500" href="https://github.com/sanxzhar">
+          Github
+        </a>
       </p>
     </body>
   );
