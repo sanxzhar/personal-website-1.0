@@ -9,7 +9,7 @@ export default function Home() {
         &quot; -{" "}
         <a
           className="text-blue-500"
-          href="https://online-motivator.vercel.app/"
+          href="https://nugmanoff.com/"
         >
           @Aidar
         </a>{" "}
