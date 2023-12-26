@@ -5,7 +5,7 @@ export default function Home() {
         <h1>Sanzhar Abduraimov</h1>
       </b>
       <p>
-        <b>Favourite quote:</b> &quot;<i>Чтобы перегореть, нужно сначала загореться</i>
+        <b>Favourite quote:</b> &quot;<i>какой нафиг work-life-balance, у тебя должен быть только work и work</i>
         &quot; -{" "}
         <a
           className="text-blue-500"
