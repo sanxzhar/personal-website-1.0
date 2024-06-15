@@ -9,7 +9,7 @@ type HomeProps = {
   backgroundCharacters: string[];
 };
 
-const Home: NextPage<HomeProps> = () => {
+const Home = () => {
 
   return (
     <main
@@ -40,6 +40,18 @@ const Home: NextPage<HomeProps> = () => {
         astana, kz
       </p>
 
+      {/* <button
+        className="!absolute top-[1lh] right-[2ch] sm:right-[7ch] hover:bg-black h-[1lh] transition-colors !w-[3ch] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#006aff] rounded-none hover:!text-white font-medium bg-white animate-textFade"
+        style={{
+          animationDelay: `calc(1 * var(--animation-delay-step))`,
+        }}
+      >
+        Dark
+        <span className={audioPlaying ? 'rotate-90 block' : 'translate-x-[2px] inline-block'}>
+          {audioPlaying ? ' = ' : <>&nbsp;▶&nbsp;</>}
+        </span>
+      </button> */}
+
       <h2
         className="font-bold mt-[2lh] sm:mt-[3lh] bg-white animate-textFade"
         style={{
@@ -61,12 +73,17 @@ const Home: NextPage<HomeProps> = () => {
         i am doing an internship at <a href='https://yandex.com'>yandex</a> as interfaces builder and 
         studying computer science at <a href='https://nu.edu.kz'>nazarbayev university</a>. currently obsessed with semiconductors and computer architecture.
       </p>
+
+
+
       <p
         className="mt-[1lh] animate-textFade"
         style={{
           animationDelay: `calc(5 * var(--animation-delay-step))`,
         }}
-      />
+      >
+        tech stack: react, next.js, redux, effector, js, ts or anything else if you give me time to learn.
+      </p>
       
       <h2
         className="font-bold mt-[2lh] bg-white animate-textFade"
@@ -246,7 +263,7 @@ import React, {
   useState,
 } from 'react';
 
-export function useInterval(callback: () => void, delay: number | null) {
+function useInterval(callback: () => void, delay: number | null) {
   const savedCallback = useRef(callback);
 
   // Remember the latest callback if it changes.
