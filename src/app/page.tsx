@@ -1,23 +1,20 @@
-"use client"
-import type { NextPage } from 'next';
-import styles from './index.module.css';
-import Link from 'next/link';
+"use client";
+import styles from "./index.module.css";
+import Link from "next/link";
 
-const BACKGROUND_CHARACTERS = ' *,      ./0!8#X~;$\\}%'.replaceAll(' ', '\u00A0');
-
-type HomeProps = {
-  backgroundCharacters: string[];
-};
+const BACKGROUND_CHARACTERS = " *,      ./0!8#X~;$\\}%".replaceAll(
+  " ",
+  "\u00A0"
+);
 
 const Home = () => {
-
   return (
     <main
       className={`${styles.container} relative leading-normal pl-[2ch] pt-[1lh] pr-[2ch] sm:pt-[2lh] sm:pl-[7ch] min-h-[100dvh] pb-[1lh] overflow-hidden`}
       id="new"
       style={
         {
-          '--animation-delay-step': '90ms',
+          "--animation-delay-step": "90ms",
         } as CSSProperties
       }
     >
@@ -40,18 +37,6 @@ const Home = () => {
         astana, kz
       </p>
 
-      {/* <button
-        className="!absolute top-[1lh] right-[2ch] sm:right-[7ch] hover:bg-black h-[1lh] transition-colors !w-[3ch] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#006aff] rounded-none hover:!text-white font-medium bg-white animate-textFade"
-        style={{
-          animationDelay: `calc(1 * var(--animation-delay-step))`,
-        }}
-      >
-        Dark
-        <span className={audioPlaying ? 'rotate-90 block' : 'translate-x-[2px] inline-block'}>
-          {audioPlaying ? ' = ' : <>&nbsp;▶&nbsp;</>}
-        </span>
-      </button> */}
-
       <h2
         className="font-bold mt-[2lh] sm:mt-[3lh] bg-white animate-textFade"
         style={{
@@ -66,15 +51,15 @@ const Home = () => {
           animationDelay: `calc(4 * var(--animation-delay-step))`,
         }}
       >
-
-        <TextBackground text="i am doing an internship at yandex as interfaces builder and 
-        studying computer science at nazarbayev university." />
-
-        i am doing an internship at <a href='https://yandex.com'>yandex</a> as interfaces builder and 
-        studying computer science at <a href='https://nu.edu.kz'>nazarbayev university</a>. currently obsessed with semiconductors and computer architecture.
+        <TextBackground
+          text="i am doing an internship at yandex as interfaces builder and 
+        studying computer science at nazarbayev university."
+        />
+        i am doing an internship at <a href="https://yandex.com">yandex</a> as
+        interfaces builder and studying computer science at{" "}
+        <a href="https://nu.edu.kz">nazarbayev university</a>. currently
+        obsessed with semiconductors and computer architecture.
       </p>
-
-
 
       <p
         className="mt-[1lh] animate-textFade"
@@ -82,9 +67,10 @@ const Home = () => {
           animationDelay: `calc(5 * var(--animation-delay-step))`,
         }}
       >
-        tech stack: react, next.js, redux, effector, js, ts or anything else if you give me time to learn.
+        tech stack: react, next.js, redux, effector, js, ts or anything else if
+        you give me time to learn.
       </p>
-      
+
       <h2
         className="font-bold mt-[2lh] bg-white animate-textFade"
         style={{
@@ -113,7 +99,7 @@ const Home = () => {
         links
       </h2>
       <ul>
-      <li
+        <li
           className="animate-textFade"
           style={{
             animationDelay: `calc(11 * var(--animation-delay-step))`,
@@ -155,7 +141,9 @@ const CHARACTER_HEIGHT = 24;
 
 const Background = () => {
   const [render, setRender] = useState(false);
-  const [backgroundCharacters, setBackgroundCharacters] = useState<string[]>([]);
+  const [backgroundCharacters, setBackgroundCharacters] = useState<string[]>(
+    []
+  );
 
   /**
    * Calculate the background characters based on the viewport dimensions.
@@ -171,13 +159,19 @@ const Background = () => {
 
       // Calculate the number of characters needed based on the viewport width and height
       const charactersNeededWidth = Math.ceil(viewportWidth / CHARACTER_WIDTH);
-      const charactersNeededHeight = Math.ceil(viewportHeight / CHARACTER_HEIGHT);
-      const numberOfCharactersNeeded = charactersNeededWidth * charactersNeededHeight;
+      const charactersNeededHeight = Math.ceil(
+        viewportHeight / CHARACTER_HEIGHT
+      );
+      const numberOfCharactersNeeded =
+        charactersNeededWidth * charactersNeededHeight;
 
       // Generate an array of random background characters
       setBackgroundCharacters(
         Array.from({ length: numberOfCharactersNeeded }).map(
-          () => BACKGROUND_CHARACTERS[Math.floor(Math.random() * BACKGROUND_CHARACTERS.length)]
+          () =>
+            BACKGROUND_CHARACTERS[
+              Math.floor(Math.random() * BACKGROUND_CHARACTERS.length)
+            ]
         )
       );
     }, 300),
@@ -185,7 +179,7 @@ const Background = () => {
   );
 
   useEffect(() => {
-    if ('document' in window) {
+    if ("document" in window) {
       setRender(true);
       calculateBackground();
     }
@@ -196,10 +190,10 @@ const Background = () => {
       calculateBackground();
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, [calculateBackground]);
 
@@ -213,7 +207,7 @@ const Background = () => {
       aria-hidden
       id="background"
       style={{
-        animationDelay: '1s',
+        animationDelay: "1s",
       }}
     >
       {backgroundCharacters.map((char, index) => (
@@ -230,16 +224,19 @@ const Character = ({ value }: { value: string }) => {
   const ref = useRef<HTMLSpanElement>(null);
 
   useInterval(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
 
     if (Math.random() < 0.01) {
       if (ref.current) {
-        ref.current.animate([{ color: '#F2F2F2' }, { color: '#C9C9C9' }, { color: '#F2F2F2' }], {
-          duration: 1000,
-          easing: 'linear',
-        });
+        ref.current.animate(
+          [{ color: "#F2F2F2" }, { color: "#C9C9C9" }, { color: "#F2F2F2" }],
+          {
+            duration: 1000,
+            easing: "linear",
+          }
+        );
       }
     }
   }, noise.current);
@@ -261,7 +258,7 @@ import React, {
   useLayoutEffect,
   useRef,
   useState,
-} from 'react';
+} from "react";
 
 function useInterval(callback: () => void, delay: number | null) {
   const savedCallback = useRef(callback);
@@ -289,7 +286,8 @@ function useInterval(callback: () => void, delay: number | null) {
   }, [delay]);
 }
 
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const TextBackground = ({ text }: { text: string }) => {
   return (
@@ -300,7 +298,7 @@ const TextBackground = ({ text }: { text: string }) => {
       <span
         className="text-white bg-white"
         style={{
-          overflowWrap: 'anywhere',
+          overflowWrap: "anywhere",
         }}
       >
         {text}
